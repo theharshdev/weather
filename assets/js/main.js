@@ -129,13 +129,13 @@ $("#searchBtn").click(() => {
          "#temperature, #humidity, #maxTemp, #minTemp, #feelsLike, #weatherCondition, #windSpeed, #windDegree, #windDirec"
       ).html("0");
    } else {
-      getWeather($("#searchInputFeild").val());
+      getWeather($("#searchInputFeild").val().trim());
    }
 });
 
 $("#searchInputFeild").keypress(function (event) {
    if (event.keyCode === 13) {
-      getWeather($("#searchInputFeild").val());
+      getWeather($("#searchInputFeild").val().trim());
    }
 });
 
