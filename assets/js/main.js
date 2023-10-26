@@ -45,6 +45,18 @@ window.addEventListener("load", () => {
    });
 });
 
+setInterval(() => {
+   // Today date and time -----------
+   const todayDate = new Date().toLocaleDateString().replace("/", "-").replace("/", "-");
+   const todayTime = new Date().toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+   });
+   $("#todayTime").html(todayTime);
+   $("#todayDate").html(todayDate);
+}, 1000);
+
 $(".openMenu").click(() => {
    $(".menuBar").slideToggle(300);
    $(".rotateArrow").toggleClass("rotate-180");
@@ -97,8 +109,16 @@ async function getWeather(city) {
             `<img src="https://openweathermap.org/img/wn/${dataWeatherIcon}d@2x.png" alt="weather icon" />`
          );
          $("#errorAlert").html("");
-         const sunriseUnix = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
-         const sunsetUnix = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+         const sunriseUnix = new Date(data.sys.sunrise * 1000).toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+         });
+         const sunsetUnix = new Date(data.sys.sunset * 1000).toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+         });
          $("#sunriseTime").html(sunriseUnix);
          $("#sunsetTime").html(sunsetUnix);
       } else {
@@ -203,8 +223,16 @@ window.addEventListener("load", () => {
                if (windDirection2 > 270 && windDirection2 < 360) {
                   cWindDirec.innerHTML = "North-West";
                }
-               const sunriseUnix2 = new Date(data2.sys.sunrise * 1000).toLocaleTimeString();
-               const sunsetUnix2 = new Date(data2.sys.sunset * 1000).toLocaleTimeString();
+               const sunriseUnix2 = new Date(data2.sys.sunrise * 1000).toLocaleString("en-US", {
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+               });
+               const sunsetUnix2 = new Date(data2.sys.sunset * 1000).toLocaleString("en-US", {
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
+               });
                cSunrise.innerHTML = sunriseUnix2;
                cSunset.innerHTML = sunsetUnix2;
             }
